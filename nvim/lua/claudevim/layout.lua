@@ -11,11 +11,19 @@ local state = {
 function M.state() return state end
 
 local function claude_command()
-  local args = vim.env.CLAUDEVIM_CLAUDE_ARGS or ""
-  if args ~= "" then
-    return "claude " .. args
+  -- Reconstruct the exact arg list from the numbered env vars set by the
+  -- shim. Using a list (rather than a string) means termopen exec's claude
+  -- directly with no shell parsing — args with spaces, quotes, etc. survive
+  -- unchanged.
+  local cmd = { "claude" }
+  local argc = tonumber(vim.env.CLAUDEVIM_CLAUDE_ARGC or "") or 0
+  for idx = 0, argc - 1 do
+    local val = vim.env["CLAUDEVIM_CLAUDE_ARG_" .. idx]
+    if val ~= nil then
+      table.insert(cmd, val)
+    end
   end
-  return "claude"
+  return cmd
 end
 
 local function spawn_claude_in_current_win()

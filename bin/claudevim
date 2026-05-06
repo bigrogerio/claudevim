@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 # claudevim — boot a minimal Neovim with Claude Code embedded.
-# All args are forwarded to claude (e.g. `claudevim --resume`, `claudevim --model X`).
+# All args are forwarded to claude (e.g. `claudevim --resume`,
+# `claudevim --message "hello world"`).
 set -e
 
 export NVIM_APPNAME=claudevim
-export CLAUDEVIM_CLAUDE_ARGS="$*"
+
+# Forward each arg as its own environment variable so the lua side can
+# reconstruct the exact list, preserving args that contain spaces, quotes,
+# or other shell-meaningful characters.
+i=0
+for arg in "$@"; do
+  export "CLAUDEVIM_CLAUDE_ARG_$i=$arg"
+  i=$((i + 1))
+done
+export CLAUDEVIM_CLAUDE_ARGC=$i
 
 exec nvim
