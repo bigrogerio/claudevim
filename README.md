@@ -119,6 +119,46 @@ If a specific `<leader>` action would be useful directly from inside the
 claude pane, it can be added as a terminal-mode mapping — at the cost of
 making that key combo unreachable to claude code.
 
+## claudevim as a markdown reader
+
+A common use case in practice: opening claudevim on a project just to read
+its docs — README, design notes, ADRs, library guides — alongside claude.
+It does that well, even though it's not a dedicated markdown viewer like
+[charmbracelet/glow](https://github.com/charmbracelet/glow).
+
+The honest trade-off up front: **glow renders**. It turns `# Heading` into
+a styled heading, `**bold**` into bold, fenced code into syntax-coloured
+boxes; the output is a typeset page in the terminal. **claudevim shows
+source** — raw markdown with treesitter highlighting on the syntactic
+markers. If your goal is to *read prose pleasantly*, glow wins on
+typography.
+
+The case for claudevim isn't about prettier rendering. It's about what
+sits next to the document:
+
+- **Claude Code, on the same screen.** The single biggest gain over a
+  pure renderer. You're reading a section of a guide and something is
+  unclear? `<C-l>` and ask. The doc stays visible, the answer comes in the
+  pane next to it. No copy-paste, no tab-switching, no "let me ask
+  somewhere else."
+- **A file explorer for documentation trees.** Real-world docs aren't
+  one-file affairs — they're folders of `.md` under `docs/`, design notes
+  scattered across a repo, ADRs in dated subdirectories. `<Space>e` walks
+  the tree without leaving the reader.
+- **`<Space>fg` (live grep) across all docs.** Finding the right paragraph
+  in a 30-file documentation set is instant.
+- **Edits on the fly.** Reading a doc and noticing a typo, an outdated
+  command, a missing note? You're already in an editor. Fix it, save,
+  move on.
+
+Where glow keeps its edge: launch on one file and read. Single binary, no
+setup, no dependency tree. For *that* workflow it's better, full stop.
+
+claudevim makes a different bet — that for developers, documentation is
+read **while doing something else**: writing code, asking questions,
+cross-referencing. In that context, putting the doc next to a code-aware
+AI and a project file tree beats a prettier prose renderer.
+
 ## Stack
 
 - `lazy.nvim` — plugin manager
