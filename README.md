@@ -5,6 +5,53 @@ Minimal Neovim distribution with Claude Code embedded.
 Inspired by the layout and school of LazyVim, but without depending on it:
 hand-rolled stack on top of `lazy.nvim` with ~7 carefully chosen plugins.
 
+## Never used vim? You'll be fine.
+
+vim has a reputation, and most of it comes from maximalist setups out
+there — hundreds of keymaps, a wall of plugins, configs that take a
+weekend to read. claudevim is the opposite: a deliberate subset. There's
+no LSP, no autocomplete, no mason. The keymap surface fits in a small
+table, and which-key shows you the table whenever you press `<Space>`.
+
+The minimum to be productive on day one:
+
+- `i` to start typing, `<Esc>` to stop.
+- `:w` to save, `:wq` to save and quit.
+- `<Space>e` opens the file explorer; `<Space>ff` finds a file by name.
+- `<C-h>` jumps to the editor; `<C-l>` jumps to claude.
+
+That's a five-minute curve. The rest you pick up by use, and claude is in
+the next pane to teach you on demand: stuck on a vim command? `<C-l>`,
+ask, get the answer next to your code. In that sense claudevim is a
+*kinder* introduction to vim than installing the editor on its own — the
+usual stumbling blocks (finding files, navigating windows, getting
+unstuck) are handled by neo-tree, telescope, and three Ctrl bindings.
+
+### Why a terminal-native editor beats a heavy IDE
+
+Even if VS Code or JetBrains is your comfort zone, terminal-native has
+real edges that compound:
+
+- **claude code lives in the terminal.** That's where it was designed to
+  run. Inside an IDE you either Alt-Tab to a terminal or use a plugin
+  that adds a translation layer with its own latency and quirks.
+  claudevim removes the gap.
+- **Lighter, faster, quieter.** No Electron, no JVM. Startup in
+  hundreds of milliseconds, RAM cost a fraction of a full IDE. Your
+  laptop fan stops mattering.
+- **Composable with your shell.** `cd` into a project, run `claudevim`,
+  work. No "open workspace", no "trust this folder", no interpreter
+  selection. The shell skills you have everywhere keep working here.
+- **Travels over SSH.** Same setup runs on a remote server with no
+  remote-protocol layer in between. Open a tmux on a beefy machine, run
+  claudevim, develop as if local.
+- **Quiet UI.** No notifications, no "extension X needs updating", no
+  popups. The screen is your code and claude.
+
+You don't have to abandon your IDE — some workflows still want the heavy
+kit. But for the largest single use case ("write code, ask claude"),
+claudevim is faster, lighter, and closer to the metal.
+
 ## Layout
 
 On launch, two vertical panes:
