@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# claudevim — boot a minimal Neovim with Claude Code embedded.
+# All args are forwarded to claude (e.g. `claudevim --resume`, `claudevim --model X`).
+set -e
+
+export NVIM_APPNAME=claudevim
+export CLAUDEVIM_CLAUDE_ARGS="$*"
+
+exec nvim
