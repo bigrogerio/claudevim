@@ -1,4 +1,5 @@
 <img width="2535" height="1369" alt="image" src="https://github.com/user-attachments/assets/64bf477a-ca44-4b1c-9a6d-2c69516d0f9f" />
+
 # claudevim
 
 Minimal Neovim distribution with Claude Code embedded.
