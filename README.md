@@ -17,15 +17,20 @@ The file explorer (neo-tree) opens and closes on demand via `<leader>e`.
 ## Installation
 
 ```bash
-git clone <this repo> ~/coding/claudevim
+git clone https://github.com/bigrogerio/claudevim.git ~/coding/claudevim
 cd ~/coding/claudevim
 ./install.sh
 ```
+
+(SSH alternative: `git clone git@github.com:bigrogerio/claudevim.git ~/coding/claudevim`.)
 
 Creates two symlinks:
 
 - `~/.config/claudevim` -> `<repo>/nvim`
 - `/opt/homebrew/bin/claudevim` -> `<repo>/bin/claudevim`
+
+The clone target doesn't have to be `~/coding/claudevim` — pick any path. The
+`install.sh` symlinks from wherever the repo lives.
 
 Requirements:
 
