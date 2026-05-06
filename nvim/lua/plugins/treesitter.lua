@@ -1,6 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    -- Pin to the legacy `master` branch. The repo's new default `main` has
+    -- a different API and does not expose `nvim-treesitter.configs`.
+    branch = "master",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     main = "nvim-treesitter.configs",
