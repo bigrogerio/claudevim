@@ -34,9 +34,13 @@ The clone target doesn't have to be `~/coding/claudevim` — pick any path. The
 
 Requirements:
 
-- `nvim >= 0.10`
+- `nvim >= 0.12`
 - `claude` on PATH
 - `git`
+- `tree-sitter` CLI (`brew install tree-sitter-cli` on macOS) — used by
+  nvim-treesitter to compile syntax-highlighting parsers from source on
+  first run. Without it, `:TSUpdate` fails and you'll see plain-text
+  buffers without highlights.
 - A **Nerd Font** configured in your terminal — the dashboard and file
   explorer use Nerd Font glyphs (icons for "find file", "recent files", a
   little robot for the claude entry, etc.). Without it those icons render as
